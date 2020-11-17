@@ -3,6 +3,7 @@ package Commands;
 import Database.BadCount;
 import Database.NeutralCount;
 import Tools.Maths;
+import Tools.Scoring;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.text.DecimalFormat;
@@ -31,7 +32,7 @@ public class checkRating implements Command{
                 bad = "0";
             }
 
-            int score = Integer.parseInt(neutral) - Integer.parseInt(bad);
+            int score = Scoring.getScore(word);
 
             String status;
             if (score > 0) {

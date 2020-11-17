@@ -4,6 +4,7 @@ import Commands.Processing.CommandHandler;
 import Commands.Processing.CommandListener;
 import Commands.checkRating;
 import Database.*;
+import Listeners.Punisher;
 import Listeners.RateMessage;
 import net.dv8tion.jda.api.AccountType;
 import net.dv8tion.jda.api.JDABuilder;
@@ -33,7 +34,7 @@ public class Main {
 
         builder.setToken(Config.load("token"));
 
-        builder.addEventListeners(new RateMessage(), new CommandListener());
+        builder.addEventListeners(new RateMessage(), new CommandListener(), new Punisher());
 
         builder.build();
 
