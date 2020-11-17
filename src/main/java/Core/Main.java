@@ -34,7 +34,7 @@ public class Main {
 
         builder.setToken(Config.load("token"));
 
-        builder.addEventListeners(new RateMessage(), new CommandListener(), new Punisher());
+        builder.addEventListeners(new RateMessage(), new CommandListener());
 
         builder.build();
 

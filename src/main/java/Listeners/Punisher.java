@@ -12,7 +12,7 @@ public class Punisher extends ListenerAdapter {
 
         String[] words = event.getMessage().getContentRaw().split(" ");
         for (int i = 0; i < words.length; i++) {
-            if (!(Scoring.getScore(words[i]) >= 0)) {
+            if (Scoring.getScore(words[i]) != 0 && Scoring.getScore(words[i]) < 0) {
                 event.getTextChannel().sendMessage("The Codex Astartes does not support this action!").queue();
                 i = 124124;
             }
