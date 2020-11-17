@@ -1,6 +1,10 @@
 package Core;
 
-import Database.Config;
+import Commands.Processing.CommandHandler;
+import Commands.Processing.CommandListener;
+import Commands.checkRating;
+import Database.*;
+import Listeners.RateMessage;
 import net.dv8tion.jda.api.AccountType;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -16,6 +20,10 @@ public class Main {
     public static void main(String[] args) throws LoginException, IOException {
 
         Config.init();
+        Score.init();
+        NeutralCount.init();
+        BadCount.init();
+        Messages.init();
 
         builder = new JDABuilder(AccountType.BOT);
 
@@ -25,8 +33,17 @@ public class Main {
 
         builder.setToken(Config.load("token"));
 
+        builder.addEventListeners(new RateMessage(), new CommandListener());
+
         builder.build();
 
+        Commands();
+
+    }
+
+    public static void Commands() {
+        CommandHandler.commands.put("check", new checkRating());
+        CommandHandler.commands.put("c", new checkRating());
     }
 
 }
