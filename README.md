@@ -1,2 +1,2 @@
 # yamazaki
- A simple self-learning AI, which can detect bad words.
+ A simple self-learning App, which can detect bad words.
